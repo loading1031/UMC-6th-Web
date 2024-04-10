@@ -14,31 +14,36 @@
         <div class = "form-container">
           <div class="form-field name-field">
             <label for="name">이름</label>
-            <input type="text" name="text" id="name">
+            <input type="text" name="text" id="name" required>
             <span class="error-message">필수 입력 항목입니다!</span>
+            <span class="success-message">멋진 이릅이네요!</span>
           </div>
           <div class="form-field email-field">
             <label for="email">이메일</label>
-            <input type="email" name="email" id="email">
+            <input type="email" name="email" id="email" required>
             <span class="error-message">올바른 이메일 형식이 아닙니다!</span>
+            <span class="success-message">올바른 이메일 형식입니다!</span>
           </div>
           <div class="form-field age-field">
             <label for="age">나이</label>
-            <input type="text" name="age" id="age">
+            <input type="text" name="age" id="age" required>
             <span class="error-message">나이를 입력해주세요!</span>
+            <span class="success-message">올바른 나이 형식입니다!</span>
           </div>
           <div class="form-field password-field">
             <label for="password">비밀번호</label>
-            <input type="password" name="password" id="password">
+            <input type="password" name="password" id="password" required>
             <span class="error-message">비밀번호는 8자 이상이어야 합니다.</span>
+            <span class="success-message">올바른 비밀번호입니다!</span>
           </div>
           <div class="form-field pwd-check-field">
             <label for="password-check">비밀번호 확인</label>
-            <input type="password" name="pwd-check" id="pwd-check">
+            <input type="password" name="pwd-check" id="pwd-check" required>
             <span class="error-message">비밀번호가 일치하지 않습니다.</span>
+            <span class="success-message">비밀번호가 일치합니다.</span>
           </div>
             
-          <div class="form-field"><input type="submit" value="가입하기" class="btn"></div>
+          <div class="form-field"><input type="submit" value="가입하기" class="btn" disabled></div>
         </div>
       </div>    
     </form>

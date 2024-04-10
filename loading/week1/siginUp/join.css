@@ -40,6 +40,10 @@ body, html {
     display:none;
     color:red
 }
+.success-message{
+    display:none;
+    color:green
+}
 .form-field input:not([type="submit"]) {
     width:100%;
     font-size: 15px;
