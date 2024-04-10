@@ -34,8 +34,15 @@ function validateForm() {
     var pwdCheck = document.getElementById("pwd-check").value;
     
     var nameError = document.querySelector(".name-field .error-message");
+    
     var emailError = document.querySelector(".email-field .error-message");
-    var ageError = document.querySelector(".age-field .error-message");
+    
+    var ageErrorEmpty = document.querySelector(".age-field .empty");
+    var ageErrorIsNan = document.querySelector(".age-field .isNan")
+    var ageErrorMinus = document.querySelector(".age-field .minus");
+    var ageErrorDecimal = document.querySelector(".age-field .decimal");
+    var ageErrorYoung = document.querySelector(".age-field .young");
+
     var passwordError = document.querySelector(".password-field .error-message");
     var pwdCheckError = document.querySelector(".pwd-check-field .error-message")
 
@@ -66,14 +73,59 @@ function validateForm() {
         emailError.style.display = "none";
     }
 
-    if (age.trim()===""||isNaN(age)){
-        ageError.style.display = "block";
+    if (age.trim() === ""){
+        ageErrorEmpty.style.display = "block";
+        ageErrorIsNan.style.display = "none";
+        ageErrorMinus.style.display = "none";
+        ageErrorDecimal.style.display = "none";
+        ageErrorYoung.style.display = "none";
         ageSuccess.style.display = "none";
 
         bool = false;
-    }else{
-        ageSuccess.style.display = "block";
-        ageError.style.display = "none";
+    } else if(isNaN(age)){
+        ageErrorIsNan.style.display = "block";
+        ageErrorEmpty.style.display = "none";
+        ageErrorMinus.style.display = "none";
+        ageErrorDecimal.style.display = "none";
+        ageErrorYoung.style.display = "none";
+        ageSuccess.style.display = "none";
+        bool = false;
+    } else{
+        var ageValue = parseFloat(age); // age를 숫자로 변환
+        if(!Number.isInteger(ageValue)){
+            ageErrorDecimal.style.display = "block";
+            ageErrorEmpty.style.display = "none";
+            ageErrorIsNan.style.display = "none";
+            ageErrorMinus.style.display = "none";
+            ageErrorYoung.style.display = "none";
+            ageSuccess.style.display = "none";
+            bool = false;
+
+        }else if(ageValue < 0){
+            ageErrorMinus.style.display = "block";
+            ageErrorEmpty.style.display = "none";
+            ageErrorIsNan.style.display = "none";
+            ageErrorDecimal.style.display = "none";
+            ageErrorYoung.style.display = "none";
+            ageSuccess.style.display = "none";
+            bool = false;
+        } else if(ageValue < 19){
+            ageErrorYoung.style.display = "block";
+            ageErrorEmpty.style.display = "none";
+            ageErrorIsNan.style.display = "none";
+            ageErrorMinus.style.display = "none";
+            ageErrorDecimal.style.display = "none";
+            ageSuccess.style.display = "none";
+            bool = false;
+        } else {
+            ageSuccess.style.display = "block";
+            // 모든 ageError들을 숨깁니다.
+            ageErrorEmpty.style.display = "none";
+            ageErrorIsNan.style.display = "none";
+            ageErrorMinus.style.display = "none";
+            ageErrorDecimal.style.display = "none";
+            ageErrorYoung.style.display = "none";
+        }
     }
     // 비밀번호 검증
     if (password.length < 8) {
