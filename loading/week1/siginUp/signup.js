@@ -43,7 +43,10 @@ function validateForm() {
     var ageErrorDecimal = document.querySelector(".age-field .decimal");
     var ageErrorYoung = document.querySelector(".age-field .young");
 
-    var passwordError = document.querySelector(".password-field .error-message");
+    var passwordErrorMin = document.querySelector(".password-field .min");
+    var passwordErrorMax = document.querySelector(".password-field .max");
+    var passwordErrorSimple = document.querySelector(".password-field .simple");
+    
     var pwdCheckError = document.querySelector(".pwd-check-field .error-message")
 
     var nameSuccess = document.querySelector(".name-field .success-message");
@@ -128,15 +131,34 @@ function validateForm() {
         }
     }
     // 비밀번호 검증
-    if (password.length < 8) {
-        passwordError.style.display = "block";
+    if (password.length < 4) {
+        passwordErrorMin.style.display = "block";
+        passwordErrorMax.style.display = "none";
+        passwordErrorSimple.style.display = "none"; 
         passwordSuccess.style.display = "none";
 
         bool = false;
-    } else {
+    } else if(password.length > 12){
+        passwordErrorMax.style.display = "block";
+        passwordErrorMin.style.display = "none";
+        passwordErrorSimple.style.display = "none"; 
+        passwordSuccess.style.display = "none";
+        
+        bool = false;
+    } else if(!/[A-Za-z]/.test(password) || !/\d/.test(password) || !/[!@#$%^&*]/.test(password)){
+        passwordErrorSimple.style.display = "block";
+        passwordErrorMin.style.display = "none";
+        passwordErrorMax.style.display = "none";
+        passwordSuccess.style.display = "none";
+        
+        bool = false;
+    }else {
         passwordSuccess.style.display = "block";
-        passwordError.style.display = "none";
+        passwordErrorMin.style.display = "none";
+        passwordErrorMax.style.display = "none";
+        passwordErrorSimple.style.display = "none"; // 성공 시 모든 에러 메시지를 숨깁니다.
     }
+
     if (pwdCheck.trim()===""||password!=pwdCheck) {
         pwdCheckError.style.display = "block";
         pwdCheckSuccess.style.display = "none";
