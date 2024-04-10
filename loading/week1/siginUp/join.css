@@ -4,24 +4,25 @@ body, html {
     display: flex;
     justify-content: center; /* 가로 중앙 정렬 */
     align-items: center; /* 세로 중앙 정렬 */
-    background-color: rgb(102, 159, 187);
+    background-color: #acd8e6;
 }
 .join {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center; /* 주 축에 따라 중앙 정렬 */
+    width: 600px;
+    height:600px;
     
-    width: 70vw; /* 뷰포트 너비의 20% */
-    height: 70vw; /* 뷰포트 너비의 20%와 동일하게 설정하여 정사각형 유지 */
-    margin: auto;
     border-radius: 15px;
 
-    background-color: rgb(140, 194, 194);
+    background-color: #dff0f5;
 }
 .divider {
     width: 50%;
     height: 1px;
     background-color: white;
+    margin-bottom: 15px;
 }
 .form-container{
     align-items: center;
@@ -31,20 +32,26 @@ body, html {
     flex-direction: column; /* 요소들을 수직으로 쌓음 */
     align-items: flex-start; /* 텍스트와 입력창을 왼쪽으로 정렬 */
     margin: 5px 0;
-    width: 100%;
+}
+.form-field label{
+    margin-top: 10pt;
+}
+.error-message{
+    display:none;
+    color:red
 }
 .form-field input:not([type="submit"]) {
+    width:100%;
     font-size: 15px;
     border: 0;
     border-radius: 5px;
     outline: none;
     padding: 5px 10px;
-    margin-bottom: 20px;
     border:1px solid white;
     background-color: transparent; /* 입력 필드 배경색 투명 설정 */
 }
 .btn {
-    width: 80%;
+    width: 100%;
     height: 10%;
     font-size: 15px;
     color : white;
@@ -52,6 +59,6 @@ body, html {
     border-radius: 5px;
     outline: none;
     padding: 5px 10px;
-    background-color: rgb(66, 62, 62);
+    background-color: #808080;
     margin: 10px;
 }
