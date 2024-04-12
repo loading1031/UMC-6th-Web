@@ -1,0 +1,54 @@
+body, html {
+    height: 100%; /* 전체 높이를 화면에 맞춤 */
+    
+    margin: 0; /* 기본 마진 제거 */
+    display: flex;
+    justify-content: center; /* 가로 중앙 정렬 */
+    background-color: black;
+}
+form{
+    width: auto;
+    max-width: 70vw;
+    min-width: 50vw;
+    background-color: yellow;
+}
+h1{
+    margin-bottom: 60px;
+    text-align: center; 
+}
+
+.divider.title{
+    width: 100%;
+    height: 1px;
+    background-color: black;
+    margin-bottom: 15px;
+}
+.form-container{
+    text-align: center; /* 가로 중앙 정렬 */
+}
+.todo-title-field, .done-title-field{
+    display: inline-block; /* 인라인 블록 요소로 표시 */
+    vertical-align: top; /* 요소들을 상단에 맞춤 */
+    margin-inline-start: 150px; /* 요소 사이에 오른쪽 여백 추가 */
+    margin-inline-end: 150px;
+} 
+input[type="text"]{
+    width:80%;
+    padding: 10px;
+}
+.divider.todo {
+    height: 1px; /* 높이를 1px로 설정하여 선처럼 보이게 합니다. */
+    background-color: black; /* 밑줄의 색상 설정 */
+    margin-top: 10px; /* 위쪽 여백 */
+    margin-bottom: 10px; /* 아래쪽 여백 */
+}
+.h4{
+    text-decoration: underline;
+}
+.todo-text, .btn{
+    display: inline-block; /* 인라인 블록 요소로 표시 */
+    vertical-align: top; /* 요소들을 상단에 맞춤 */
+}
+.btn{
+    margin-left: 60px; /* 요소 사이 여백 추가 */
+}

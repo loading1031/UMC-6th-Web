@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Todo List</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="styles.css">
+  </head>
+
+  <body>
+    <form id="todo-list-form">
+        <h1>UMC Study Plan</h1>
+        <div class="divider title"></div>
+        <div class="form-container">
+            <input type="text" name="todo" id="todo" placeholder="스터디 계획을 작성해 보세요!">
+            <div class="todo-title-field">
+                <h4>해야할 일</h4>
+                <div class="todo-list-field">
+                    <!-- 동적으로 todo 항목이 추가될 위치 -->
+                </div>
+            </div>
+            <div class="done-title-field">
+                <h4>해낸 일</h4>
+                <div class="todo-list-field">
+                    <!-- 완료된 todo 항목이 이동할 위치 -->
+                </div>
+            </div>
+        </div>
+    </form>
+    <script src="todo.js"></script>
+</body>
+
+</html>
