@@ -1,0 +1,51 @@
+/* src/App.css */
+.App{
+  background-color: green;
+  width: 80vw;
+  height: 100%;
+  justify-content: center; /* 가로 방향 중앙 정렬 */
+  align-items: center;   /* 세로 방향 중앙 정렬 */
+}
+h1{
+  text-align: center;
+
+}
+
+input[type="text"]{
+  width: 100%; /* 입력 필드 폭을 부모 요소의 100%로 설정 */
+  padding: 10px; /* 입력 필드 내부의 패딩 */
+  box-sizing: border-box; /* 패딩과 테두리를 요소의 총 크기에 포함 */
+}
+.done-title-field, .todo-title-field{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 45%; /* 필요에 따라 조정 */
+  margin: 10px; /* 주변 여백 */
+  padding: 10px; /* 패딩 추가 */
+  background-color: blue; /* 배경 색상 추가 */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* 그림자 효과 */
+  border-radius: 8px; /* 경계선 둥글게 */
+}
+/* 전체 할 일 목록을 감싸는 컨테이너에 flex 스타일 적용 */
+.todo-list-container {
+  display: flex;
+  justify-content: space-around; /* 각 요소 사이에 공간을 균등하게 배분 */
+  padding: 20px; /* 약간의 패딩을 추가 */
+}
+
+/* 추가적인 스타일 조정이 필요할 수 있음 */
+.todo-content{
+  display: flex;
+  align-items: center;
+}
+
+button{
+  margin-left: 20px;
+}
+.divider{
+  width:100%;
+  height:1px;
+  margin: 5px;
+  background-color: black;
+}
