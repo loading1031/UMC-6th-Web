@@ -14,6 +14,7 @@ function App() {
             title={movie.title}
             posterPath={movie.poster_path}
             voteAverage={movie.vote_average}
+            overview={movie.overview} // 상세 설명 추가
           />
         ))}
       </div>
