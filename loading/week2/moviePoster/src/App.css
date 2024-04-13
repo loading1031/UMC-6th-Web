@@ -1,0 +1,29 @@
+.background.basic{
+  background-color: #22264C;
+}
+
+.poster{
+  width: 200px; 
+  margin: 10px;
+  background-color: #373B6A;
+}
+image{
+  margin-bottom: 0;
+  background-color: aliceblue;
+}
+.background.poster{
+  margin: 0;
+  background-color: #373B6A;
+}
+.content-text{
+  display: flex;
+    justify-content: space-between; /* 컨테이너 내의 요소들을 양 끝으로 정렬 */
+    width: 100%; /* 필요에 따라 조정 */
+}
+.title{
+  margin-left: 10px;
+}
+.voteAv{
+  margin-right: 10px;
+  text-align: right;
+}
