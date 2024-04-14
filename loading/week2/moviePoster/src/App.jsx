@@ -1,5 +1,5 @@
 import React from 'react';
-import Movie from './Movie';
+import Movie from './components/Movie';
 import { moviesData } from './data/moviesData'; // 데이터 파일 임포트
 import './App.css';
 

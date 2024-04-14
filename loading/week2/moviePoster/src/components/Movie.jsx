@@ -1,5 +1,7 @@
 import React, {useState} from "react";
-import './App.css'
+import Overview from './Overview';
+import '../App'
+
 
 function Movie({ title, posterPath, voteAverage, overview }) {
     const [isHovered, setIsHovered] = useState(false);
@@ -24,11 +26,7 @@ function Movie({ title, posterPath, voteAverage, overview }) {
                 <span className='title'>{title}</span>
                 <span className='voteAv'>{voteAverage}</span>
             </div>
-            {isHovered && (
-                <div className="movie-overview">
-                    <p>{overview}</p>
-                </div>
-            )}
+            {isHovered && <Overview overview={overview}/>}
         </div>
     );
 }
