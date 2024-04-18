@@ -5,12 +5,12 @@ function Counter() {
 
   const handleIncrease = () => {
     console.log("increase 버튼이 클릭됨");
-    setCount(count + 1);
+    setCount(count => count + 1);
   };
 
   const handleDecrease = () => {
     console.log("decrease 버튼이 클릭됨");
-    setCount(count - 1);
+    setCount(count => count - 1);
   };
 
   return (
