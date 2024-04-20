@@ -1,7 +1,12 @@
 import React, {useState} from "react";
 import Overview from './Overview';
+import styled from 'styled-components';
 import '../App'
 
+const Poster = styled.img`
+    width: 100%;
+    height: 70%;
+`;
 
 function Movie({ title, posterPath, voteAverage, overview }) {
     const [isHovered, setIsHovered] = useState(false);
@@ -21,7 +26,7 @@ function Movie({ title, posterPath, voteAverage, overview }) {
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
         >
-            <img src={`https://image.tmdb.org/t/p/w500/${posterPath}`} alt={title} style={{ width: '100%', height: '70%' }} />
+            <Poster src={`https://image.tmdb.org/t/p/w500/${posterPath}`} alt={title} />
             <div className="content-text">
                 <span className='title'>{title}</span>
                 <span className='voteAv'>{voteAverage}</span>

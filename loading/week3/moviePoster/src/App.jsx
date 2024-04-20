@@ -2,6 +2,12 @@ import React, { useState, useEffect } from 'react';
 import Movie from './components/Movie';
 import { API_URL, API_KEY } from './Config.js';
 import './App.css';
+import styled from 'styled-components';
+
+const PosterWrapper = styled.div`
+  display: flex;
+  flex-wrap : wrap;
+`;
 
 function App() {
   const [movies, setMovies] = useState([]);
@@ -39,7 +45,7 @@ function App() {
   return (
     <div className='background basic'>
       <h1>Movie List</h1>
-      <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+      <PosterWrapper>
         {movies.map(movie => (
           <Movie
             key={movie.id}
@@ -49,7 +55,7 @@ function App() {
             overview={movie.overview}
           />
         ))}
-      </div>
+      </PosterWrapper>
     </div>
   );
 }
