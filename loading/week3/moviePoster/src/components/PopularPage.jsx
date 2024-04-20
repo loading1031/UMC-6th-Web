@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Movie from './common/Movie';
 import styled from 'styled-components';
-import './PopularPage.css';
 import { useOutletContext } from 'react-router-dom';
 import MovieList from './common/MovieList';
 
