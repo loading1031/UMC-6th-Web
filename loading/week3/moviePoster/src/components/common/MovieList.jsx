@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Movie from './Movie';
 import styled from 'styled-components';
-import '../PopularPage.css';
+import './MovieList.css';
 
 const PosterWrapper = styled.div`
   display: flex;
