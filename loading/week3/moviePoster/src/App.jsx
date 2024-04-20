@@ -1,62 +1,58 @@
 import React, { useState, useEffect } from 'react';
-import Movie from './components/Movie';
 import { API_URL, API_KEY } from './Config.js';
 import './App.css';
+import { Outlet,Link } from 'react-router-dom';
 import styled from 'styled-components';
+import Popular from './components/PopularPage.jsx';
 
-const PosterWrapper = styled.div`
+const StyledNav = styled.nav`
+  background-color: #181B37;
   display: flex;
-  flex-wrap : wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  width: 100%; 
+  margin-top: 10px;
 `;
 
+const StyledUl = styled.ul`
+  display: flex;
+  list-style: none;
+  padding:10px;
+  margin: 0;
+  li {
+    color: white;
+    margin-right: 20px; // 오른쪽 마진을 추가하여 각 항목 사이의 간격을 늘림
+  }
+`;
+
+const StyledLink = styled(Link)`
+  color: white; // 링크의 텍스트 색상을 흰색으로 설정
+  text-decoration: none; // 밑줄 제거
+  }`;
+
+const NavBar = () => (
+  <StyledNav>
+    <h4 style={{margin:0, color:'white'}}>UMC Movie</h4>
+    <StyledUl>
+      <li><StyledLink>회원가입</StyledLink></li>
+      <li><StyledLink to="/popular">Popular</StyledLink></li>
+      <li><StyledLink to="/nowplaying">NowPlaying</StyledLink></li>
+      <li><StyledLink to="/toprated">Top Rated</StyledLink></li>
+      <li><StyledLink to="/upcoming">Upcoming</StyledLink></li>
+     </StyledUl>
+  </StyledNav>
+);
+
 function App() {
-  const [movies, setMovies] = useState([]);
-  const [page, setPage] = useState(1);
-
-  useEffect(() => {
-    const endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=ko-KR&page=${page}`;
-    
-    console.log('Fetching movies'); // 로그 추가
-    fetch(endpoint)
-    .then(response => response.json()) 
-    .then(response => {
-      console.log('Fetched data:', response); // 데이터 로드 로그
-      setMovies(prev => [...prev, ...response.results]);
-    });
-  }, [page]); // 의존성 배열이 빈 배열이므로 컴포넌트 마운트 시 1회 실행
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const windowHeight = window.innerHeight;
-      const body = document.body;
-      const html = document.documentElement;
-      const docHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight);
-      const windowBottom = windowHeight + window.scrollY; // pageYOffset 대신 scrollY 사용
-      if (windowBottom >= docHeight - 1) {
-        setPage(prevPage => prevPage + 1); // 페이지 번호 증가
-      }
-    };
-  
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-  
 
   return (
-    <div className='background basic'>
-      <h1>Movie List</h1>
-      <PosterWrapper>
-        {movies.map(movie => (
-          <Movie
-            key={movie.id}
-            title={movie.title}
-            posterPath={movie.poster_path}
-            voteAverage={movie.vote_average}
-            overview={movie.overview}
-          />
-        ))}
-      </PosterWrapper>
+
+    <div>
+      <NavBar />
+      <Outlet context={{ API_URL, API_KEY }} />
     </div>
+
   );
 }
 
