@@ -4,3 +4,4 @@
 *.wav
 .DS_Store
 test/
+Config.js
