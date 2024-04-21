@@ -1,13 +1,8 @@
-import React, { useState } from 'react';
-import { useOutletContext } from 'react-router-dom';
-import MovieList from './MovieList';
+import React from "react";
+import MovieList from "./MovieList";
 
-function Upcoming(){
-    const { API_URL, API_KEY } = useOutletContext();
-
-  return (
-    <MovieList path='upcoming' API_KEY={API_KEY} API_URL={API_URL}/>
-    );
+function Upcoming() {
+  return <MovieList path="upcoming" />;
 }
 
 export default Upcoming;
