@@ -1,13 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import Movie from './Movie';
-import styled from 'styled-components';
-import './MovieList.css';
-
-const PosterWrapper = styled.div`
-  display: flex;
-  flex-wrap : wrap;
-  justify-content: center; // 아이템을 중앙 정렬
-`;
+import Movie from './Movie';
+import {BackgroundBasic, PosterWrapper} from './styles';
 
 function MovieList({endpoint, setPage, page}){
 
@@ -42,7 +35,7 @@ const [movies, setMovies] = useState([]);
   
 
   return (
-    <div className='background basic'>
+    <BackgroundBasic>
       <PosterWrapper>
         {movies.map(movie => (
           <Movie
@@ -54,7 +47,7 @@ const [movies, setMovies] = useState([]);
           />
         ))}
       </PosterWrapper>
-    </div>
+    </BackgroundBasic>
   );
 }
 

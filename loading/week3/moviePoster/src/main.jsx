@@ -7,7 +7,7 @@ import {
 import './index.css'
 import App from './App.jsx'
 import Popular from './components/PopularPage.jsx';
-import MainPage from './components/MainPage.jsx';
+import MainPage from './components/MainPage';
 import NowPlaying from './components/NowPlayingPage.jsx';
 import TopRated from './components/TopRatedPage.jsx';
 import Upcoming from './components/Upcoming.jsx';

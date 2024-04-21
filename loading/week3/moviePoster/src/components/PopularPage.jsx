@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import Movie from './common/Movie';
+import Movie from './MovieList/Movie';
 import styled from 'styled-components';
 import { useOutletContext } from 'react-router-dom';
-import MovieList from './common/MovieList';
+import MovieList from './MovieList';
 
 const PosterWrapper = styled.div`
   display: flex;
