@@ -1,23 +1,24 @@
 import React, { useEffect, useState } from "react";
 import Movie from "./Movie";
-import { BackgroundBasic, PosterWrapper } from "./styles";
+import { BackgroundBasic, PosterWrapper,Spinner } from "./styles";
 
 function MovieList({ path }) {
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState(false); // 로딩 상태 추가
   const endpoint = `${import.meta.env.VITE_API_URL}movie/${path}?api_key=${
     import.meta.env.VITE_API_KEY
   }&language=ko-KR&page=${page}`;
 
   useEffect(() => {
-    console.log("Fetching movies"); // 로그 추가
+    setLoading(true); // 데이터 요청 전 로딩 시작
     fetch(endpoint)
       .then((response) => response.json())
       .then((response) => {
-        console.log("Fetched data:", response); // 데이터 로드 로그
         setMovies((prev) => [...prev, ...response.results]);
+        setLoading(false); // 데이터 로딩 완료 후 로딩 상태 해제
       });
-  }, [page]); // 의존성 배열이 빈 배열이므로 컴포넌트 마운트 시 1회 실행
+  }, [page]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -40,6 +41,10 @@ function MovieList({ path }) {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  if (loading) {
+    return <Spinner />; // 로딩 중 스피너 표시
+  }
 
   return (
     <BackgroundBasic>
