@@ -19,7 +19,7 @@ const CenteredContainer = styled.div`
 
 // 바텀 컨테이너
 const BottomContainer = styled.div`
-    background-color: #181B37;
+    background-color: #22264C;
     display: flex;
     align-items: center;      // 수직 중앙 정렬
     flex-direction: column; // 아이템들을 수직 방향으로 쌓음
@@ -45,7 +45,7 @@ const StyledButton = styled.button`
     transition: background-color 0.3s; /* 배경 색상 변화 애니메이션 */
     align-items: center; // 내용을 수직 중앙에 정렬
 
-    font-size: 30px; // 아이콘의 크기를 늘림
+    font-size: 20px; // 아이콘의 크기를 늘림
 
     &:hover {
         background-color: #45a049; /* 마우스 오버 시 배경 색상 변경 */
