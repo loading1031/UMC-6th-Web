@@ -8,7 +8,7 @@ function NowPlaying(){
     const endpoint = `${API_URL}movie/now_playing?api_key=${API_KEY}&language=ko-KR&page=${page}`
 
   return (
-      <MovieList endpoint={endpoint} setPage={setPage} page={page}/>
+      <MovieList path='now_playing' API_KEY={API_KEY} API_URL={API_URL}/>
     );
 }
 

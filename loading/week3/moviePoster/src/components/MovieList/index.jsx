@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react';
 import Movie from './Movie';
 import {BackgroundBasic, PosterWrapper} from './styles';
 
-function MovieList({endpoint, setPage, page}){
+function MovieList({path, API_KEY, API_URL}){
 
-const [movies, setMovies] = useState([]);
+  const [movies, setMovies] = useState([]);
+  const [page, setPage] = useState(1);
+  const endpoint = `${API_URL}movie/${path}?api_key=${API_KEY}&language=ko-KR&page=${page}`
 
   useEffect(() => {
     
