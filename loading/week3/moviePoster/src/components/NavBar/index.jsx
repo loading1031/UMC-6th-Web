@@ -5,7 +5,7 @@ const NavBar = () => (
   <StyledNav>
     <h4 style={{ margin: 0, color: 'white' }}>UMC Movie</h4>
     <StyledUl>
-      <li><StyledLink>회원가입</StyledLink></li>
+      <li><StyledLink to="/join">회원가입</StyledLink></li>
       <li><StyledLink to="/popular">Popular</StyledLink></li>
       <li><StyledLink to="/nowplaying">NowPlaying</StyledLink></li>
       <li><StyledLink to="/toprated">Top Rated</StyledLink></li>
