@@ -1,7 +1,7 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const BackgroundBasic = styled.div`
-  background-color: #22264C;
+  background-color: #22264c;
   justify-content: space-between;
 `;
 

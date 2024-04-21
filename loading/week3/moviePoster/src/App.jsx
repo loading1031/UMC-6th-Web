@@ -1,9 +1,9 @@
-import React from 'react';
-import NavBar from './components/NavBar';
-import Footer from './components/Footer';
-import { API_URL, API_KEY } from './Config';
-import './App.css';
-import { Outlet } from 'react-router-dom';
+import React from "react";
+import { Outlet } from "react-router-dom";
+import "./App.css";
+import { API_KEY, API_URL } from "./Config";
+import Footer from "./components/Footer";
+import NavBar from "./components/NavBar";
 
 function App() {
   return (
@@ -16,7 +16,3 @@ function App() {
 }
 
 export default App;
-
-
-
-

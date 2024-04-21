@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const StyledH1 = styled.h1`
   color: white;
@@ -15,7 +15,7 @@ export const CenteredContainer = styled.div`
 `;
 
 export const BottomContainer = styled.div`
-  background-color: #22264C;
+  background-color: #22264c;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -35,7 +35,7 @@ export const StyledButton = styled.button`
   margin-left: 30px;
   padding: 10px 20px;
   border-radius: 50%;
-  background-color: #F6CF50;
+  background-color: #f6cf50;
   color: white;
   border: none;
   cursor: pointer;

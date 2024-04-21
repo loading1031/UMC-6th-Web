@@ -1,21 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
-  StyledH1,
-  CenteredContainer,
-  BottomContainer,
-  StyledInput,
-  StyledButton,
-  InputButtonContainer
-} from './styles';
+    BottomContainer,
+    CenteredContainer,
+    InputButtonContainer,
+    StyledButton,
+    StyledH1,
+    StyledInput,
+} from "./styles";
 
 function MainPage() {
-  const [input, setInput] = useState('');
+  const [input, setInput] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (input.trim()) {
       addTodo(input.trim());
-      setInput('');
+      setInput("");
     }
   };
 
@@ -25,7 +25,7 @@ function MainPage() {
         <StyledH1>환영합니다</StyledH1>
       </CenteredContainer>
       <BottomContainer>
-        <StyledH1 style={{ fontSize: '48px' }}>📽️ Find your movies!</StyledH1>
+        <StyledH1 style={{ fontSize: "48px" }}>📽️ Find your movies!</StyledH1>
         <InputButtonContainer>
           <StyledInput
             type="text"

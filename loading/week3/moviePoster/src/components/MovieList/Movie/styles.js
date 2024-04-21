@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Poster = styled.img`
   width: 100%;
@@ -10,7 +10,7 @@ export const PosterContainer = styled.div`
   overflow: auto;
   width: 200px;
   margin: 15px;
-  background-color: #373B6A;
+  background-color: #373b6a;
 
   &:hover .movie-overview {
     display: block;
@@ -41,7 +41,7 @@ export const MovieOverview = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0,0.7);
+  background-color: rgba(0, 0, 0, 0.7);
   color: white;
   display: flex;
   align-items: center;
