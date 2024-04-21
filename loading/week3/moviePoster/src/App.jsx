@@ -44,6 +44,22 @@ const NavBar = () => (
   </StyledNav>
 );
 
+const StyledFooter = styled.footer`
+  display: flex;
+  justify-content:space-between;
+  background-color: #181B37; // 네비게이션 바와 동일한 배경색
+  color: white; // 텍스트 색상
+  text-align: center; // 텍스트 중앙 정렬
+  padding: 10px auto; // 상하 패딩
+`;
+
+const Footer = () => (
+  <StyledFooter>
+    <h3 style={{marginLeft:'30px'}}>🌺</h3>
+    <h3 style={{marginRight:'30px'}}>https://umc.makeus.in/umc</h3>
+  </StyledFooter>
+);
+
 function App() {
 
   return (
@@ -51,6 +67,7 @@ function App() {
     <div>
       <NavBar />
       <Outlet context={{ API_URL, API_KEY }} />
+      <Footer/>
     </div>
 
   );
