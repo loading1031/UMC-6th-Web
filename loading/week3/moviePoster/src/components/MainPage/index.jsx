@@ -14,7 +14,6 @@ function MainPage() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (input.trim()) {
-      addTodo(input.trim());
       setInput("");
     }
   };
