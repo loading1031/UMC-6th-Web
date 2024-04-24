@@ -18,7 +18,7 @@ function MovieList({ path }) {
         setMovies((prev) => [...prev, ...response.results]);
         setLoading(false); // 데이터 로딩 완료 후 로딩 상태 해제
       });
-  }, [page]);
+  }, [endpoint, page]);
 
   useEffect(() => {
     const handleScroll = () => {
