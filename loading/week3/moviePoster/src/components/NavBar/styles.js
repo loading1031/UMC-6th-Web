@@ -2,13 +2,15 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
 export const StyledNav = styled.nav`
+  margin-top: -10px;
+  position: fixed;
+  z-index: 100;
   background-color: #181B37;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 10px;
   width: 100%; 
-  margin-top: 10px;
 `;
 
 export const StyledUl = styled.ul`
@@ -33,3 +35,4 @@ export const StyledLink = styled(NavLink)`
     cursor: pointer; // 커서 모양 변경
   }
 `;
+

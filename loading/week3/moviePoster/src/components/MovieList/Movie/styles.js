@@ -11,6 +11,7 @@ export const PosterContainer = styled.div`
   width: 200px;
   margin: 15px;
   background-color: #373b6a;
+  margin-top: 80px;
 
   &:hover .movie-overview {
     display: block;
