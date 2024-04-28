@@ -4,7 +4,8 @@ export const Container = styled.div`
   display: grid;
   grid-template-columns: 5fr 5fr;
   align-items: center; // 컨텐츠를 각 열의 수직 중앙에 정렬합니다.
-  height: 100vh; // 전체 뷰포트 높이로 설정하여 셀이 확장되도록 함
+  height: 100%; // 전체 뷰포트 높이로 설정하여 셀이 확장되도록 함
+  width: 100%;
   position: absolute; // z-index를 사용하기 위해 필요
   top: 0;
   left: 0;
@@ -21,9 +22,11 @@ export const ImageContainer = styled.div`
 
 export const ContentContainer = styled.div`
   display: flex;
-  flex-direction: column; // 내용을 세로로 정렬합니다.
-  gap: 10px; // 내용 사이의 간격을 조정합니다.
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center; // 세로 방향 중앙 정렬
 `;
+
 
 export const StyledH1 = styled.h1`
   color: white;
