@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import {
-    BottomContainer,
-    CenteredContainer,
-    InputButtonContainer,
-    StyledButton,
-    StyledH1,
-    StyledInput,
+  BottomContainer,
+  CenteredContainer,
+  InputButtonContainer,
+  StyledButton,
+  StyledH1,
+  StyledInput,
 } from "./styles";
 
 function MainPage() {
