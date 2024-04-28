@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Movie from "./Movie";
-import { BackgroundBasic, PosterWrapper,Spinner } from "./styles";
+import { BackgroundBasic, PosterWrapper, Spinner } from "./styles";
 
 function MovieList({ path }) {
   const [movies, setMovies] = useState([]);
@@ -14,6 +14,7 @@ function MovieList({ path }) {
     fetch(endpoint)
       .then((response) => response.json())
       .then((response) => {
+        console.log(response);
         setMovies((prev) => [...prev, ...response.results]);
         setLoading(false); // 데이터 로딩 완료 후 로딩 상태 해제
       });
@@ -27,13 +28,7 @@ function MovieList({ path }) {
     <BackgroundBasic>
       <PosterWrapper>
         {movies.map((movie) => (
-          <Movie
-            key={movie.id}
-            title={movie.title}
-            posterPath={movie.poster_path}
-            voteAverage={movie.vote_average}
-            overview={movie.overview}
-          />
+          <Movie key={movie.id} movie={movie} />
         ))}
       </PosterWrapper>
     </BackgroundBasic>

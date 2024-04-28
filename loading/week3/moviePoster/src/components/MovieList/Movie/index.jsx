@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   ContentText,
   MovieOverview,
@@ -8,8 +9,9 @@ import {
   VoteAverage,
 } from "./styles";
 
-function Movie({ title, posterPath, voteAverage, overview }) {
+function Movie({ movie }) {
   const [isHovered, setIsHovered] = useState(false);
+  const navigate = useNavigate();
 
   const handleMouseEnter = () => {
     console.log("mouse on");
@@ -21,20 +23,25 @@ function Movie({ title, posterPath, voteAverage, overview }) {
     setIsHovered(false);
   };
 
+  const goToMovieDetail = () => {
+    navigate(`/movie/${movie.title}`, { state: { ...movie } });
+  };
+
   return (
     <PosterContainer
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      onClick={goToMovieDetail}
     >
       <Poster
-        src={`https://image.tmdb.org/t/p/w500/${posterPath}`}
-        alt={title}
+        src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+        alt={movie.title}
       />
       <ContentText>
-        <Title>{title}</Title>
-        <VoteAverage>⭐️{voteAverage}</VoteAverage>
+        <Title>{movie.title}</Title>
+        <VoteAverage>⭐️{movie.vote_average}</VoteAverage>
       </ContentText>
-      {isHovered && <MovieOverview>{overview}</MovieOverview>}
+      {isHovered && <MovieOverview>{movie.overview}</MovieOverview>}
     </PosterContainer>
   );
 }
