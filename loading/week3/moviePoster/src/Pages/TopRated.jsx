@@ -1,5 +1,5 @@
 import React from "react";
-import MovieList from "./MovieList";
+import MovieList from "../components/MovieList";
 
 function TopRated() {
   return <MovieList path="top_rated" />;

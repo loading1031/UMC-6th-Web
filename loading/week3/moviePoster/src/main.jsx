@@ -2,12 +2,12 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App.jsx";
-import MainPage from "./components/MainPage";
-import NowPlaying from "./components/NowPlaying.jsx";
-import Popular from "./components/Popular.jsx";
-import TopRated from "./components/TopRated.jsx";
-import Upcoming from "./components/UpComing.jsx";
-import MovieDetail from "./components/MovieDetail/index.jsx";
+import MainPage from "./Pages/MainPage/index.jsx";
+import NowPlaying from "./Pages/NowPlaying.jsx";
+import Popular from "./Pages/Popular.jsx";
+import TopRated from "./Pages/TopRated.jsx";
+import Upcoming from "./Pages/UpComing.jsx";
+import MovieDetail from "./Pages/MovieDetail/index.jsx";
 
 const router = createBrowserRouter([
   {
