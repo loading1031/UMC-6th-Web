@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+
+import { Overview } from "./overview";
 import {
   ContentText,
-  MovieOverview,
   Poster,
   PosterContainer,
   Title,
@@ -42,7 +43,7 @@ function Movie({ movie }) {
         <Title>{movie.title}</Title>
         <VoteAverage>⭐️{movie.vote_average}</VoteAverage>
       </ContentText>
-      {isHovered && <MovieOverview>{movie.overview}</MovieOverview>}
+      {isHovered && <Overview title={movie.title} overview={movie.overview} />}
     </PosterContainer>
   );
 }
