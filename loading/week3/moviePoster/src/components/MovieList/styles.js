@@ -1,6 +1,7 @@
-import styled, { keyframes } from 'styled-components';
+import styled, { keyframes } from "styled-components";
 
 export const BackgroundBasic = styled.div`
+  padding: 3%;
   background-color: #22264c;
   justify-content: space-between;
 `;
@@ -8,8 +9,9 @@ export const BackgroundBasic = styled.div`
 export const PosterWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: left;
 `;
+
 export const spin = keyframes`
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }

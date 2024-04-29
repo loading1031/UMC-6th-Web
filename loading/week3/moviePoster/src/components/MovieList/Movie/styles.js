@@ -11,7 +11,6 @@ export const PosterContainer = styled.div`
   width: 250px;
   margin: 15px;
   background-color: #373b6a;
-  margin-top: 80px;
 `;
 
 export const ContentText = styled.div`
