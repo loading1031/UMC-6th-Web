@@ -1,5 +1,5 @@
 // NotFound.js
-import React from "react";
+import { React, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Background } from "./styles";
 
@@ -7,7 +7,7 @@ const NotFound = () => {
   const navigate = useNavigate();
 
   // 컴포넌트 마운트 시 /404로 리다이렉트
-  React.useEffect(() => {
+  useEffect(() => {
     navigate("/404");
   }, [navigate]);
 
