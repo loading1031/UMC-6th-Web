@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
 export const StyledNav = styled.nav`
-  margin-top: -10px;
   position: fixed;
   z-index: 100;
   background-color: #181B37;
