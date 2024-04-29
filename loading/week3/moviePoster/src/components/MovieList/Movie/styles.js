@@ -8,14 +8,10 @@ export const Poster = styled.img`
 export const PosterContainer = styled.div`
   position: relative;
   overflow: auto;
-  width: 200px;
+  width: 250px;
   margin: 15px;
   background-color: #373b6a;
   margin-top: 80px;
-
-  &:hover .movie-overview {
-    display: block;
-  }
 `;
 
 export const ContentText = styled.div`
@@ -44,9 +40,7 @@ export const MovieOverview = styled.div`
   height: 100%;
   background-color: rgba(0, 0, 0, 0.7);
   color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  align-text: center;
   padding: 10px;
   box-sizing: border-box;
 `;
