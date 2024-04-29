@@ -12,7 +12,7 @@ const NavBar = () => {
     <StyledNav>
       <h4 style={{ margin: 0, color: 'white' }}>UMC Movie</h4>
       <StyledUl>
-        <li><StyledLink to="/" onClick={handleLoginClick}>
+        <li><StyledLink onClick={handleLoginClick}>
         {isLoggedIn ? '로그아웃' : '로그인'}
         </StyledLink></li>
         <li><StyledLink to="/popular">Popular</StyledLink></li>
