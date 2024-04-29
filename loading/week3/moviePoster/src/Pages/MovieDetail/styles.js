@@ -18,8 +18,7 @@ export const Overlay = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(34, 38, 76, 0.8); // 50% 투명도
-
+  background-color: rgba(34, 38, 76, 0.8);
   display: flex;
   justify-content: center;
   align-items: center;
