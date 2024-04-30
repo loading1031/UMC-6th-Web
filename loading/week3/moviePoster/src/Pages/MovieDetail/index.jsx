@@ -6,7 +6,7 @@ function MovieDetail() {
   const { state: movie } = useLocation();
 
   return (
-    <Background src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}>
+    <Background src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`}>
       <Overlay />
       <ForeGround />
     </Background>
