@@ -9,6 +9,7 @@ import TopRated from "./Pages/TopRated.jsx";
 import Upcoming from "./Pages/UpComing.jsx";
 import MovieDetail from "./Pages/MovieDetail/index.jsx";
 import NotFound from "./Pages/NotFound/index.jsx";
+import SignUp from "./Pages/SignUp/index.jsx";
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,7 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       { index: true, element: <MainPage /> },
+      { path: "/signup", element: <SignUp /> },
       { path: "/popular", element: <Popular /> },
       { path: "/nowplaying", element: <NowPlaying /> },
       { path: "/toprated", element: <TopRated /> },
