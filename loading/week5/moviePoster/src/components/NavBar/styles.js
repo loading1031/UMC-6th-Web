@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 export const StyledNav = styled.nav`
   position: fixed;
+  top:0;
   z-index: 100;
   background-color: #181B37;
   display: flex;
