@@ -2,7 +2,6 @@ import styled, { keyframes } from "styled-components";
 
 export const BackgroundBasic = styled.div`
   padding: 3%;
-  background-color: #22264c;
   justify-content: space-between;
 `;
 

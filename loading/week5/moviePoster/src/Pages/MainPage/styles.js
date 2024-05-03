@@ -8,6 +8,7 @@ export const StyledH1 = styled.h1`
 
 export const CenteredContainer = styled.div`
   display: flex;
+  background-color: black;
   justify-content: center;
   align-items: center;
   height: 40vh;
@@ -15,7 +16,6 @@ export const CenteredContainer = styled.div`
 `;
 
 export const BottomContainer = styled.div`
-  background-color: #22264c;
   display: flex;
   align-items: center;
   flex-direction: column;
