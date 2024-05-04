@@ -19,7 +19,6 @@ export const BottomContainer = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  height: 50vh;
 `;
 
 export const StyledInput = styled.input`
@@ -35,13 +34,12 @@ export const StyledButton = styled.button`
   margin-left: 30px;
   padding: 10px 20px;
   border-radius: 50%;
-  background-color: #f6cf50;
-  color: white;
+  background-color: ${props => props.disabled ? '' : '#f6cf50'};
   border: none;
   cursor: pointer;
   transition: background-color 0.3s;
   align-items: center;
-  font-size: 20px;
+  font-size: 30px;
 
   &:hover {
     background-color: #45a049;
