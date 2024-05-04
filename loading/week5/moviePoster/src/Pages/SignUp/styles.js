@@ -51,8 +51,10 @@ export const StyledButton = styled.button`
   margin: 15px 35%;
   padding: 20px;
   font-size: 20px;
+  font-color: #22264c;
   box-sizing: border-box;
   border-radius: 20px;
+  background-color: ${props => props.disabled ? '' : 'yellow'};
 `;
 
 export const WhiteP = styled.p`
