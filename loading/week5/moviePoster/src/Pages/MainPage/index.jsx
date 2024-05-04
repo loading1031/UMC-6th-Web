@@ -3,6 +3,7 @@ import axios from "axios";
 import {
   BottomContainer,
   CenteredContainer,
+  FormContainer,
   InputButtonContainer,
   StyledButton,
   StyledH1,
@@ -40,7 +41,7 @@ function MainPage() {
       </CenteredContainer>
       <BottomContainer>
         <StyledH1 style={{ fontSize: "48px" }}>📽️ Find your movies!</StyledH1>
-        <form onSubmit={handleSubmit}>
+        <FormContainer onSubmit={handleSubmit}>
           <InputButtonContainer>
             <StyledInput
               type="text"
@@ -54,7 +55,7 @@ function MainPage() {
               🔍
             </StyledButton>
           </InputButtonContainer>
-        </form>
+        </FormContainer>
         {search && <Search movies={movies} />}
       </BottomContainer>
     </div>

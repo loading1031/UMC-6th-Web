@@ -21,6 +21,10 @@ export const BottomContainer = styled.div`
   flex-direction: column;
 `;
 
+export const FormContainer = styled.form`
+  width: 70%;
+`;
+
 export const StyledInput = styled.input`
   flex-grow: 1;
   padding: 10px;
