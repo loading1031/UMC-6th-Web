@@ -39,7 +39,7 @@ export const validateField = (name, value, allData) => {
       break;
     case "age":
       age = parseFloat(value);
-      if (age == null) {
+      if (isNaN(age)) {
         valid = false;
         error = "나이를 입력해주세요.";
       } else if (age < 0) {
