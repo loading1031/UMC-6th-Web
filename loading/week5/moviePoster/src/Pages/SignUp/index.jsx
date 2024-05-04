@@ -30,7 +30,16 @@ function SignUp() {
 
   // 모든 에러가 비어있는지 검사하여 폼의 유효성을 판단
   const isFormValid = () => {
-    return Object.values(errors).every((error) => error === "");
+    // 모든 필드에 값이 적절히 입력되었는지 검사
+    const allFieldsFilled =
+      formData.name.trim() !== "" &&
+      formData.email.trim() !== "" &&
+      formData.age.trim() !== "" &&
+      formData.password.trim() !== "" &&
+      formData.check_pw.trim() !== "";
+    return (
+      allFieldsFilled && Object.values(errors).every((error) => error === "")
+    );
   };
 
   const handleSubmit = (event) => {
@@ -40,10 +49,14 @@ function SignUp() {
 
     if (isValid) {
       console.log(
-        "Submitted with Email:",
+        "Submitted\nEmail:",
         formData.email,
-        "Password:",
-        formData.password
+        "\nPassword:",
+        formData.password,
+        "\nname:",
+        formData.name,
+        "\nage:",
+        formData.age
       );
       // 폼 제출 로직
     }
