@@ -10,6 +10,7 @@ import {
   WarningP,
 } from "./styles";
 import { validateField, validateForm } from "./validate";
+import { useNavigate } from "react-router-dom";
 
 function SignUp() {
   const [formData, setFormData] = useState({
@@ -42,12 +43,16 @@ function SignUp() {
     );
   };
 
+  const navigate = useNavigate();
+
   const handleSubmit = (event) => {
     event.preventDefault(); // 폼의 기본 제출 동작 방지
     const { isValid, errors } = validateForm(formData);
     setErrors(errors);
 
     if (isValid) {
+      alert("회원가입이 성공적으로 완료되었습니다.");
+      navigate("/");
       console.log(
         "Submitted\nEmail:",
         formData.email,
