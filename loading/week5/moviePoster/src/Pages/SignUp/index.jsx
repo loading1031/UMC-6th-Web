@@ -1,5 +1,13 @@
 import React, { useState } from "react";
-import { StyledInput, Container, StyledFieldset, StyledLegend } from "./styles";
+import {
+  StyledInput,
+  Container,
+  StyledFieldset,
+  StyledLegend,
+  StyledButton,
+  WhiteP,
+  HorizonDiv
+} from "./styles";
 
 function SignUp() {
   const [formData, setFormData] = useState({
@@ -58,6 +66,8 @@ function SignUp() {
           onChange={handleChange}
         />
       </StyledFieldset>
+      <StyledButton>제출하기</StyledButton>
+      <HorizonDiv><WhiteP>이미 아이디가 있으신가요?</WhiteP> <WhiteP><strong>로그인 페이지로 이동하기</strong></WhiteP></HorizonDiv>
     </Container>
   );
 }
