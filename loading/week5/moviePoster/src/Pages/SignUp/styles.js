@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const FormContainer = styled.form`
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -12,11 +12,16 @@ export const StyledFieldset = styled.fieldset`
   border: none; // 테두리 제거
   position: relative; // 상대 위치 설정
   margin-top: 5%;
-  padding-top: 5%; // 상단 테두리와 legend 사이의 공간 확보
+  margin-left: 35%;
+  margin-right: 35%;
+  padding-top: 3%; // 상단 테두리와 legend 사이의 공간 확보
+  padding-left:0;
+  padding-right:0;
   display: flex;
   flex-direction: column;
   gap: 10px;
   justify-content: center; // 세로 방향 중앙 정렬
+  text-align: left;
 `;
 
 export const StyledLegend = styled.legend`
@@ -28,10 +33,18 @@ export const StyledLegend = styled.legend`
 `;
 
 export const StyledInput = styled.input`
-  margin: 5px 35%;
+  margin: 5px;
   padding: 15px;
   box-sizing: border-box;
   border-radius: 20px;
+`;
+
+export const WarningP = styled.p`
+    margin-left:3%;
+    color: red;
+`;
+export const PassP = styled.p`
+    color: green;
 `;
 
 export const StyledButton = styled.button`
