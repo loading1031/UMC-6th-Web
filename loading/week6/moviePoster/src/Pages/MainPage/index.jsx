@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import {
   BottomContainer,
@@ -16,23 +16,26 @@ function MainPage() {
   const [search, setSearch] = useState(false);
   const [movies, setMovies] = useState([]);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault(); // 폼의 기본 제출 동작 방지
-    if (!input.trim()) return;
+  useEffect(() => {
+    const handleSubmit = async () => {
+      if (!input.trim()) return; // 입력 값이 없는 경우 요청을 보내지 않습니다.
 
-    const endpoint = `${import.meta.env.VITE_API_URL}search/movie?api_key=${
-      import.meta.env.VITE_API_KEY
-    }&query=${input}&include_adult=true&language=ko-KR`;
+      const endpoint = `${import.meta.env.VITE_API_URL}search/movie?api_key=${
+        import.meta.env.VITE_API_KEY
+      }&query=${input}&include_adult=true&language=ko-KR`;
 
-    try {
-      const response = await axios.get(endpoint);
-      console.log(response.data);
-      setMovies(response.data.results);
-      setSearch(true);
-    } catch (error) {
-      console.error("요청을 처리하는 중에 오류가 발생했습니다:", error);
-    }
-  };
+      try {
+        const response = await axios.get(endpoint);
+        console.log(response.data);
+        setMovies(response.data.results);
+        if(response.data.results.length)  setSearch(true);
+      } catch (error) {
+        console.error("요청을 처리하는 중에 오류가 발생했습니다:", error);
+      }
+    };
+
+    if (input) handleSubmit();
+  }, [input]); // input 상태가 변할 때마다 이 effect가 실행됩니다.
 
   return (
     <div>
@@ -41,7 +44,7 @@ function MainPage() {
       </CenteredContainer>
       <BottomContainer>
         <StyledH1 style={{ fontSize: "48px" }}>📽️ Find your movies!</StyledH1>
-        <FormContainer onSubmit={handleSubmit}>
+        <FormContainer onSubmit={(e) => e.preventDefault()}>
           <InputButtonContainer>
             <StyledInput
               type="text"
