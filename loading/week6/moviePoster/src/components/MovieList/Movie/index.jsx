@@ -25,7 +25,7 @@ function Movie({ movie }) {
   };
 
   const goToMovieDetail = () => {
-    navigate(`/movie/${movie.id}`, { state: { ...movie } });
+    navigate(`/movie/${movie.id}`);
   };
 
   return (

@@ -1,4 +1,3 @@
-import { useLocation } from "react-router-dom";
 import {
   Container,
   ImageContainer,
@@ -8,9 +7,7 @@ import {
   StyledP,
 } from "./styles";
 
-function ForeGround() {
-  const { state: movie } = useLocation();
-
+function ForeGround({movie}) {
   return (
     <Container>
       <ImageContainer>
@@ -26,7 +23,10 @@ function ForeGround() {
         </StyledH2>
         <StyledH2>개봉일 {movie.release_date}</StyledH2>
         <StyledH2>줄거리</StyledH2>
-        <StyledP>{movie.overview || 'TMDB에서 제공하는 API에 상세 줄거리 정보가 없습니다.'}</StyledP>
+        <StyledP>
+          {movie.overview ||
+            "TMDB에서 제공하는 API에 상세 줄거리 정보가 없습니다."}
+        </StyledP>
       </ContentContainer>
     </Container>
   );
