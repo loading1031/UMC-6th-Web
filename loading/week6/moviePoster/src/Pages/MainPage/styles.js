@@ -55,3 +55,7 @@ export const InputButtonContainer = styled.div`
   width: 40%;
   margin: 20px auto;
 `;
+
+export const LoadingTxt = styled.h2`
+  color: white;
+`
