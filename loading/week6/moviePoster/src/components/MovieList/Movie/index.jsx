@@ -25,8 +25,7 @@ function Movie({ movie }) {
   };
 
   const goToMovieDetail = () => {
-    const encodedTitle = encodeURIComponent(movie.original_title); // 영화 제목을 URI 컴포넌트로 인코딩
-    navigate(`/movie/${encodedTitle}`, { state: { ...movie } });
+    navigate(`/movie/${movie.id}`, { state: { ...movie } });
   };
 
   return (
