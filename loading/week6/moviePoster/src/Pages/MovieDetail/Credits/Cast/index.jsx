@@ -12,6 +12,7 @@ function Cast({ cast }) {
         alt={cast.name || "Unknown"} // 출연자 이름이 없는 경우 'Unknown'으로 대체
       />
       <Name>{cast.name}</Name>
+      <Name>{cast.known_for_department}</Name>
     </CastContainer>
   );
 }
