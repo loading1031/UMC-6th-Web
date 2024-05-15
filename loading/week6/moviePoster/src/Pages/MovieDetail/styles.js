@@ -1,9 +1,16 @@
 import styled from "styled-components";
 
+export const Container = styled.div`
+  width:100%;
+  height: 200%;
+  display:flex;
+  flex-direction: column; // 자식 요소들을 수직으로 정렬
+`;
+
 export const Background = styled.div`
   position: relative;
   width: 100%; // 컨테이너의 전체 너비
-  height: 100%; // 뷰포트의 높이만큼 설정, 이미지가 전체 화면을 채우도록
+  height: 75%; // 뷰포트의 높이만큼 설정, 이미지가 전체 화면을 채우도록
   background-image: url(${(props) =>
     props.src}); // 이미지 URL을 props로부터 받음
   background-size: cover; // 이미지가 컨테이너 크기에 맞게 조정되도록
