@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react"; // useState와 useEffect를 react에서 임포트
 import { useParams, useNavigate } from "react-router-dom";
-import ForeGround from "./ForeGround";
+import ForeGround from "./MovieDetails";
 import { Background, Overlay } from "./styles";
+import MovieDetails from "./MovieDetails";
 
 function MovieDetail() {
   const [movie, setMovie] = useState([]);
@@ -33,7 +34,7 @@ function MovieDetail() {
   return (
     <Background src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`}>
       <Overlay />
-      <ForeGround movie={movie} />
+      <MovieDetails movie={movie} />
     </Background>
   );
 }

@@ -1,6 +1,9 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+`;
+
+export const MovieContainer = styled.div`
   display: grid;
   grid-template-columns: 5fr 5fr;
   align-items: center; // 컨텐츠를 각 열의 수직 중앙에 정렬합니다.
