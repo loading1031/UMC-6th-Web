@@ -1,8 +1,5 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
-`;
-
 export const MovieContainer = styled.div`
   display: grid;
   grid-template-columns: 5fr 5fr;

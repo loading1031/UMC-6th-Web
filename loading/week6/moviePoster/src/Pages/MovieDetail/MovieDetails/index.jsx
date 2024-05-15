@@ -1,5 +1,4 @@
 import {
-  Container,
   MovieContainer,
   ImageContainer,
   ContentContainer,
@@ -9,8 +8,8 @@ import {
 } from "./styles";
 
 function MovieDetails({ movie }) {
+  
   return (
-    <Container>
       <MovieContainer>
         <ImageContainer>
           <img
@@ -31,7 +30,6 @@ function MovieDetails({ movie }) {
           </StyledP>
         </ContentContainer>
       </MovieContainer>
-    </Container>
   );
 }
 
