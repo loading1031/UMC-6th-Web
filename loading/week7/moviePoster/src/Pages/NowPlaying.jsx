@@ -1,8 +1,8 @@
 import React from "react";
-import MovieList from "../components/MovieList";
+import InfiniteScroll from "../components/MovieList/infinScroll";
 
 function NowPlaying() {
-  return <MovieList path="now_playing" />;
+  return <InfiniteScroll path="now_playing" />;
 }
 
 export default NowPlaying;
