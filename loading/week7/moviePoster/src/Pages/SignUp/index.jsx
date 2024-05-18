@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
+import { useForm } from "react-hook-form";
 import {
   StyledInput,
   StyledFieldset,
@@ -9,134 +10,124 @@ import {
   FormContainer,
   WarningP,
 } from "./styles";
-import { validateField, validateForm } from "./validate";
 import { useNavigate } from "react-router-dom";
 
 function SignUp() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    age: "",
-    password: "",
-    check_pw: "",
-  });
-
-  const [errors, setErrors] = useState({
-    name: "",
-    email: "",
-    age: "",
-    password: "",
-    check_pw: "",
-  });
-
-  // 모든 에러가 비어있는지 검사하여 폼의 유효성을 판단
-  const isFormValid = () => {
-    // 모든 필드에 값이 적절히 입력되었는지 검사
-    const allFieldsFilled =
-      formData.name.trim() !== "" &&
-      formData.email.trim() !== "" &&
-      formData.age.trim() !== "" &&
-      formData.password.trim() !== "" &&
-      formData.check_pw.trim() !== "";
-    return (
-      allFieldsFilled && Object.values(errors).every((error) => error === "")
-    );
-  };
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors, isSubmitting, isSubmitted },
+  } = useForm({ mode: "onChange" });
 
   const navigate = useNavigate();
 
-  const handleSubmit = (event) => {
-    event.preventDefault(); // 폼의 기본 제출 동작 방지
-    const { isValid, errors } = validateForm(formData);
-    setErrors(errors);
-
-    if (isValid) {
-      alert("회원가입이 성공적으로 완료되었습니다.");
-      navigate("/");
-      console.log(
-        "Submitted\nEmail:",
-        formData.email,
-        "\nPassword:",
-        formData.password,
-        "\nname:",
-        formData.name,
-        "\nage:",
-        formData.age
-      );
-      // 폼 제출 로직
-    }
-  };
-
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      [name]: value,
-    }));
-    // setFormData와 비동기적으로 처리될 수 있기 때문에, formData의 최신 상태를 불러옴(setFormData와는 무관함)
-    const { valid, error } = validateField(name, value, {
-      ...formData,
-      [name]: value,
-    });
-
-    setErrors((prevErrors) => ({
-      ...prevErrors,
-      [name]: valid ? "" : error, // 유효하면 오류 메시지를 비움, 아니면 오류 메시지 설정
-    }));
+  const onSubmit = (data) => {
+    alert("회원가입이 성공적으로 완료되었습니다.");
+    navigate("/");
+    console.log(
+      "Submitted\nEmail:",
+      data.email,
+      "\nPassword:",
+      data.password,
+      "\nname:",
+      data.name,
+      "\nage:",
+      data.age
+    );
   };
 
   return (
-    <FormContainer onSubmit={handleSubmit}>
+    <FormContainer onSubmit={handleSubmit(onSubmit)}>
       <StyledFieldset>
         <StyledLegend>회원가입 페이지</StyledLegend>
+        
         <StyledInput
           name="name"
           type="text"
-          value={formData.name}
           placeholder="이름을 입력해주세요"
-          onChange={handleChange}
+          aria-invalid={isSubmitted ? (errors.name ? "true" : "false") : undefined}
+          {...register("name", {
+            required: "이름을 입력해주세요.",
+            pattern: {
+              value: /^[가-힣a-zA-Z\s-]+$/,
+              message: "이름은 한글, 영문자, 하이픈, 공백만 포함할 수 있습니다.",
+            },
+          })}
         />
-        {errors.name && <WarningP>{errors.name}</WarningP>}
+        {errors.name && <WarningP role="alert">{errors.name.message}</WarningP>}
+        
         <StyledInput
           name="email"
           type="email"
-          value={formData.email}
           placeholder="이메일을 입력해주세요"
           autoComplete="username" // email 자동완성
-          onChange={handleChange}
+          aria-invalid={isSubmitted ? (errors.email ? "true" : "false") : undefined}
+          {...register("email", {
+            required: "이메일을 입력해주세요.",
+            pattern: {
+              value: /\S+@\S+\.\S+/,
+              message: "유효한 이메일 주소를 입력해주세요.",
+            },
+          })}
         />
-        {errors.email && <WarningP>{errors.email}</WarningP>}
+        {errors.email && <WarningP role="alert">{errors.email.message}</WarningP>}
+        
         <StyledInput
           name="age"
           type="number"
-          value={formData.age}
           placeholder="나이를 입력해주세요"
-          // min="19"
-          // step="1"
-          onChange={handleChange}
+          aria-invalid={isSubmitted ? (errors.age ? "true" : "false") : undefined}
+          {...register("age", {
+            required: "나이를 입력해주세요.",
+            validate: {
+              positive: (value) => parseFloat(value) > 0 || "나이는 음수가 될 수 없습니다.",
+              minAge: (value) => parseFloat(value) >= 19 || "나이는 19세 이상만 가입 가능합니다.",
+              integer: (value) => Number.isInteger(parseFloat(value)) || "나이는 소수가 될 수 없습니다.",
+            },
+          })}
         />
-        {errors.age && <WarningP>{errors.age}</WarningP>}
+        {errors.age && <WarningP role="alert">{errors.age.message}</WarningP>}
+        
         <StyledInput
           name="password"
           type="password"
-          value={formData.password}
           placeholder="비밀번호를 입력해주세요"
           autoComplete="new-password" // 비밀번호 자동완성 차단
-          onChange={handleChange}
+          aria-invalid={isSubmitted ? (errors.password ? "true" : "false") : undefined}
+          {...register("password", {
+            required: "비밀번호를 입력해주세요.",
+            minLength: {
+              value: 4,
+              message: "비밀번호는 최소 4자리 이상이어야 합니다.",
+            },
+            maxLength: {
+              value: 12,
+              message: "비밀번호는 최대 12자리까지 가능합니다.",
+            },
+            pattern: {
+              value: /(?=.*\d)(?=.*[a-zA-Z])(?=.*[\W]).*/,
+              message: "비밀번호는 영어, 숫자, 특수문자를 모두 조합해야 합니다.",
+            },
+          })}
         />
-        {errors.password && <WarningP>{errors.password}</WarningP>}
+        {errors.password && <WarningP role="alert">{errors.password.message}</WarningP>}
+        
         <StyledInput
           name="check_pw"
           type="password"
-          value={formData.check_pw}
           placeholder="비밀번호 확인"
           autoComplete="new-password"
-          onChange={handleChange}
+          aria-invalid={isSubmitted ? (errors.check_pw ? "true" : "false") : undefined}
+          {...register("check_pw", {
+            required: "비밀번호를 다시 입력해주세요.",
+            validate: (value) => value === watch('password') || "비밀번호가 일치하지 않습니다.",
+          })}
         />
-        {errors.check_pw && <WarningP>{errors.check_pw}</WarningP>}
+        {errors.check_pw && <WarningP role="alert">{errors.check_pw.message}</WarningP>}
       </StyledFieldset>
 
-      <StyledButton disabled={!isFormValid()}>제출하기</StyledButton>
+      <StyledButton type="submit" disabled={isSubmitting}>제출하기</StyledButton>
       <HorizonDiv>
         <WhiteP>이미 아이디가 있으신가요?</WhiteP>
         <WhiteP>
@@ -148,3 +139,4 @@ function SignUp() {
 }
 
 export default SignUp;
+

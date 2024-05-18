@@ -39,7 +39,7 @@ export const StyledInput = styled.input`
   border-radius: 20px;
 `;
 
-export const WarningP = styled.p`
+export const WarningP = styled.small`
     margin-left:3%;
     color: red;
 `;
