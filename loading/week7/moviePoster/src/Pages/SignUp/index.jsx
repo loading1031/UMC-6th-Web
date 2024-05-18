@@ -37,6 +37,22 @@ function SignUp() {
     );
   };
 
+  // watch를 사용하여 모든 필드의 값을 가져옴
+  const formData = watch();
+
+  // 각 필드가 null이거나 비어있는지 확인
+  const btnDisable = () => {
+    return (
+      isSubmitting ||
+      !formData.name ||
+      !formData.id ||
+      !formData.email ||
+      !formData.age ||
+      !formData.password ||
+      !formData.check_pw
+    );
+  };
+
   return (
     <FormContainer onSubmit={handleSubmit(onSubmit)}>
       <StyledFieldset>
@@ -56,6 +72,17 @@ function SignUp() {
           })}
         />
         {errors.name && <WarningP role="alert">{errors.name.message}</WarningP>}
+
+        <StyledInput
+          name="id"
+          type="text"
+          placeholder="아이디를 입력해주세요"
+          aria-invalid={isSubmitted ? (errors.id ? "true" : "false") : undefined}
+          {...register("id", {
+            required: "아이디를 입력해주세요."
+          })}
+        />
+        {errors.id && <WarningP role="alert">{errors.id.message}</WarningP>}
         
         <StyledInput
           name="email"
@@ -127,7 +154,7 @@ function SignUp() {
         {errors.check_pw && <WarningP role="alert">{errors.check_pw.message}</WarningP>}
       </StyledFieldset>
 
-      <StyledButton type="submit" disabled={isSubmitting}>제출하기</StyledButton>
+      <StyledButton type="submit" disabled={btnDisable()}>제출하기</StyledButton>
       <HorizonDiv>
         <WhiteP>이미 아이디가 있으신가요?</WhiteP>
         <WhiteP>
