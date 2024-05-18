@@ -10,6 +10,7 @@ import Upcoming from "./Pages/UpComing.jsx";
 import MovieDetail from "./Pages/MovieDetail/index.jsx";
 import NotFound from "./Pages/NotFound/index.jsx";
 import SignUp from "./Pages/SignUp/index.jsx";
+import Login from "./Pages/Login/index.jsx";
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,7 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <MainPage /> },
       { path: "/signup", element: <SignUp /> },
+      { path: "/login", element: <Login /> },
       { path: "/popular", element: <Popular /> },
       { path: "/nowplaying", element: <NowPlaying /> },
       { path: "/toprated", element: <TopRated /> },

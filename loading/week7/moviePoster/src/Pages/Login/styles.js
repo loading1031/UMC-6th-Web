@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { NavLink } from "react-router-dom";
 
 export const FormContainer = styled.form`
   display: flex;
@@ -44,36 +43,13 @@ export const WarningP = styled.small`
   margin-left: 3%;
   color: red;
 `;
-export const PassP = styled.small`
-  color: green;
-`;
 
 export const StyledButton = styled.button`
-  margin: 15px 35%;
+  margin: 15px 1vw;
   padding: 20px;
   font-size: 20px;
   font-color: #22264c;
   box-sizing: border-box;
   border-radius: 20px;
   background-color: ${(props) => (props.disabled ? "" : "yellow")};
-`;
-
-export const WhiteP = styled.p`
-  color: white;
-`;
-
-export const HorizonDiv = styled.div`
-  display: flex;
-  margin: auto 35%;
-  justify-content: space-between; // 컨테이너 내부 요소들 사이에 공간을 균등하게 배분
-  align-items: center; // 수직 중앙 정렬
-`;
-
-export const StyledLink = styled(NavLink)`
-  color: white;
-  text-decoration: none;
-  &:hover {
-    font-size: 1.1em; // 호버 시 글자 크기 증가
-    cursor: pointer; // 커서 모양 변경
-  }
 `;
