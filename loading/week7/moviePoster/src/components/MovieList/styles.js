@@ -25,3 +25,34 @@ export const Spinner = styled.div`
   animation: ${spin} 2s linear infinite;
   margin: 50px auto; // 스피너를 화면 중앙에 위치시킵니다.
 `;
+
+export const PaginationWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 3em;
+`;
+
+export const WhiteSpan = styled.span`
+  color: white;
+`;
+
+export const PaginationButton = styled.button`
+  background-color: #22a6b3;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 0 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+
+  &:disabled {
+    background-color: #bdc3c7;
+    cursor: not-allowed;
+  }
+
+  &:hover:not(:disabled) {
+    background-color: #0984e3;
+  }
+`;

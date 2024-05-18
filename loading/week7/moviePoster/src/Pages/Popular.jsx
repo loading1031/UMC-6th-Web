@@ -1,8 +1,8 @@
 import React from "react";
-import MovieList from "../components/MovieList";
+import Pagination from "../components/MovieList/pagination";
 
 function Popular() {
-  return <MovieList path="popular" />;
+  return <Pagination path="popular" />;
 }
 
 export default Popular;
