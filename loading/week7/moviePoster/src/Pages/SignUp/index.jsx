@@ -1,5 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import axios from "axios";
 import {
   StyledInput,
   StyledFieldset,
@@ -23,19 +24,39 @@ function SignUp() {
 
   const navigate = useNavigate();
 
-  const onSubmit = (data) => {
-    alert("회원가입이 성공적으로 완료되었습니다.");
-    navigate("/");
-    console.log(
-      "Submitted\nEmail:",
-      data.email,
-      "\nPassword:",
-      data.password,
-      "\nname:",
-      data.name,
-      "\nage:",
-      data.age
-    );
+  const onSubmit = async (data) => {
+    if (data.password !== data.passwordCheck) {
+      alert("Passwords do not match");
+      return; // Prevent the form from being submitted
+    }
+
+    try {
+      const response = await axios.post(
+        "http://localhost:8080/auth/signup",
+        data
+      );
+      if (response.status === 201) {
+        alert("회원가입이 성공적으로 완료되었습니다.");
+        navigate("/login");
+      }
+    } catch (error) {
+      console.error(error);
+      console.error(error.response);
+      if (error.response) {
+        switch (error.response.status) {
+          case 400:
+            alert(error.response.data.message); // Passwords do not match
+            break;
+          case 409:
+            alert(error.response.data.message); // Username already exists
+            break;
+          default:
+            alert("회원가입 중 오류가 발생했습니다.");
+        }
+      } else {
+        alert("네트워크 오류가 발생했습니다. 다시 시도해주세요.");
+      }
+    }
   };
 
   // watch를 사용하여 모든 필드의 값을 가져옴
@@ -46,11 +67,11 @@ function SignUp() {
     return (
       isSubmitting ||
       !formData.name ||
-      !formData.id ||
       !formData.email ||
       !formData.age ||
+      !formData.username ||
       !formData.password ||
-      !formData.check_pw ||
+      !formData.passwordCheck ||
       Object.keys(errors).length > 0
     );
   };
@@ -77,25 +98,11 @@ function SignUp() {
           })}
         />
         {errors.name && <WarningP role="alert">{errors.name.message}</WarningP>}
-
-        <StyledInput
-          name="id"
-          type="text"
-          placeholder="아이디를 입력해주세요"
-          aria-invalid={
-            isSubmitted ? (errors.id ? "true" : "false") : undefined
-          }
-          {...register("id", {
-            required: "아이디를 입력해주세요.",
-          })}
-        />
-        {errors.id && <WarningP role="alert">{errors.id.message}</WarningP>}
-
         <StyledInput
           name="email"
           type="email"
           placeholder="이메일을 입력해주세요"
-          autoComplete="username" // email 자동완성
+          autoComplete="email" // email 자동완성
           aria-invalid={
             isSubmitted ? (errors.email ? "true" : "false") : undefined
           }
@@ -135,6 +142,26 @@ function SignUp() {
         {errors.age && <WarningP role="alert">{errors.age.message}</WarningP>}
 
         <StyledInput
+          name="username"
+          type="text"
+          placeholder="아이디를 입력해주세요."
+          autoComplete="username"
+          aria-invalid={
+            isSubmitted ? (errors.username ? "true" : "false") : undefined
+          }
+          {...register("username", {
+            required: "아이디를 입력해주세요.",
+            pattern: {
+              value: /^[a-zA-Z0-9]+$/,
+              message: "아이디는 영어와 숫자만 사용할 수 있습니다.",
+            },
+          })}
+        />
+        {errors.username && (
+          <WarningP role="alert">{errors.username.message}</WarningP>
+        )}
+
+        <StyledInput
           name="password"
           type="password"
           placeholder="비밀번호를 입력해주세요"
@@ -164,21 +191,21 @@ function SignUp() {
         )}
 
         <StyledInput
-          name="check_pw"
+          name="passwordCheck"
           type="password"
           placeholder="비밀번호 확인"
           autoComplete="new-password"
           aria-invalid={
-            isSubmitted ? (errors.check_pw ? "true" : "false") : undefined
+            isSubmitted ? (errors.passwordCheck ? "true" : "false") : undefined
           }
-          {...register("check_pw", {
+          {...register("passwordCheck", {
             required: "비밀번호를 다시 입력해주세요.",
             validate: (value) =>
               value === watch("password") || "비밀번호가 일치하지 않습니다.",
           })}
         />
-        {errors.check_pw && (
-          <WarningP role="alert">{errors.check_pw.message}</WarningP>
+        {errors.passwordCheck && (
+          <WarningP role="alert">{errors.passwordCheck.message}</WarningP>
         )}
       </StyledFieldset>
 
