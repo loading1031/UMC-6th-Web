@@ -11,18 +11,18 @@ const NavBar = ({ isLoggedIn, handleAuthentication }) => {
     <StyledNav>
       <h4 style={{ margin: 0, color: "white" }}>UMC Movie</h4>
       <StyledUl>
-        <li>
-          <StyledLink to="/signup">회원가입</StyledLink>
-        </li>
+        {!isLoggedIn && (
+          <li>
+            <StyledLink to="/signup">회원가입</StyledLink>
+          </li>
+        )}
         <li>
           {isLoggedIn ? (
             <StyledLink to="/" onClick={handleLogout}>
               로그아웃
             </StyledLink>
           ) : (
-            <StyledLink to="/login" onClick={() => handleAuthentication()}>
-              로그인
-            </StyledLink>
+            <StyledLink to="/login">로그인</StyledLink>
           )}
         </li>
         <li>
