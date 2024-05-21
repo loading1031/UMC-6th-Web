@@ -1,7 +1,11 @@
 import React from "react";
 import { StyledNav, StyledUl, StyledLink } from "./styles";
 
-const NavBar = ({ isLoggedIn, handleLoginClick }) => {
+const NavBar = ({ isLoggedIn, handleAuthentication }) => {
+  const handleLogout = (event) => {
+    event.preventDefault(); // 기본 이벤트를 막습니다.
+    handleAuthentication(null); // 로그아웃을 처리합니다.
+  };
 
   return (
     <StyledNav>
@@ -11,9 +15,15 @@ const NavBar = ({ isLoggedIn, handleLoginClick }) => {
           <StyledLink to="/signup">회원가입</StyledLink>
         </li>
         <li>
-          <StyledLink to="/login" onClick={handleLoginClick}>
-            {isLoggedIn ? "로그아웃" : "로그인"}
-          </StyledLink>
+          {isLoggedIn ? (
+            <StyledLink to="/" onClick={handleLogout}>
+              로그아웃
+            </StyledLink>
+          ) : (
+            <StyledLink to="/login" onClick={() => handleAuthentication()}>
+              로그인
+            </StyledLink>
+          )}
         </li>
         <li>
           <StyledLink to="/popular">Popular</StyledLink>

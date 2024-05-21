@@ -25,10 +25,6 @@ function SignUp() {
   const navigate = useNavigate();
 
   const onSubmit = async (data) => {
-    if (data.password !== data.passwordCheck) {
-      alert("Passwords do not match");
-      return; // Prevent the form from being submitted
-    }
 
     try {
       const response = await axios.post(

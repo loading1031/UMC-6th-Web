@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form";
 import { useNavigate, useOutletContext } from "react-router-dom";
+import axios from "axios";
 import {
   FormContainer,
   StyledButton,
@@ -24,37 +25,61 @@ function Login() {
   const btnDisable = () => {
     return (
       isSubmitting ||
-      !formData.id ||
+      !formData.username ||
       !formData.password ||
       Object.keys(errors).length > 0
     );
   };
 
   const navigate = useNavigate();
-  const { handleLoginClick } = useOutletContext();
+  const { handleAuthentication } = useOutletContext();
+
+  const onSubmit = async (data) => {
+    try {
+      // Assume login endpoint returns a token on successful login
+      const loginResponse = await axios.post(
+        "http://localhost:8080/auth/login",
+        data
+      );
+      if (loginResponse.status === 200){
+        alert(`${loginResponse.data.username}님 환영합니다.`)
+        const token = loginResponse.data.token; // Getting token from response
+        handleAuthentication(token);
+        navigate('/');
+      }
+
+    } catch (error) {
+      if (error.response) {
+        // Handle responses with specific status codes
+        if (error.response.status === 404) {
+          alert("User not found");
+        } else {
+          alert(error.response.data.message);
+        }
+      } else {
+        alert("An error occurred during login");
+      }
+    }
+  };
 
   return (
-    <FormContainer
-      onSubmit={handleSubmit((data) => {
-        alert("로그인 되었습니다.");
-        handleLoginClick(); // 로그인 상태 변경
-        navigate("/");
-      })}
-    >
+    <FormContainer onSubmit={handleSubmit(onSubmit)}>
       <StyledFieldset>
         <StyledLegend>로그인 페이지</StyledLegend>
         <StyledInput
-          id="id"
+          id="username"
           type="text"
           placeholder="아이디"
           aria-invalid={
             isSubmitted ? (errors.id ? "true" : "false") : undefined
           }
-          {...register("id", {
+          {...register("username", {
             required: "이 필수 입력입니다.",
           })}
         />
-        {errors.id && <WarningP role="alert">{errors.id.message}</WarningP>}
+        {errors.username && (
+          <WarningP role="alert">{errors.username.message}</WarningP>
+        )}
         <StyledInput
           name="password"
           type="password"
